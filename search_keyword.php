@@ -15,10 +15,10 @@ $keywordfromform = $_GET['keyword'];
 echo $keywordfromform;
 echo "<h2>Show all jokes with the word " . $keywordfromform . "</h2>";$keywordfromform = "%" . $keywordfromform . "%";
 
-$sql = "SELECT JokeID, Joke_question, Joke_answer, users_id, username FROM Jokes_table JOIN users ON users.id = jokes_table.users_id WHERE Joke_question LIKE '$keywordfromform'";
+$sql = "SELECT JokeID, Joke_question, Joke_answer, users_id, username FROM Jokes_table JOIN users ON users.id = Jokes_table.users_id WHERE Joke_question LIKE '$keywordfromform'";
 
 
-$stmt = $mysqli->prepare("SELECT JokeID, Joke_question, Joke_answer, users_id, username FROM Jokes_table JOIN users ON users.id = jokes_table.users_id WHERE Joke_question LIKE ?");
+$stmt = $mysqli->prepare("SELECT JokeID, Joke_question, Joke_answer, users_id, username FROM Jokes_table JOIN users ON users.id = Jokes_table.users_id WHERE Joke_question LIKE ?");
 $stmt->bind_param("s", $keywordfromform);
 $stmt->execute();
 $stmt->store_result();
