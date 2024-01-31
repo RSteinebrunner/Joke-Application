@@ -15,31 +15,24 @@ $keywordfromform = $_GET['keyword'];
 echo $keywordfromform;
 echo "<h2>Show all jokes with the word " . $keywordfromform . "</h2>";$keywordfromform = "%" . $keywordfromform . "%";
 
-$sql = "SELECT JokeID, Joke_question, Joke_answer, users_id, username FROM Jokes_table JOIN users ON users.id = Jokes_table.users_id WHERE Joke_question LIKE '$keywordfromform'";
-
-echo "SQL = " . $sql . "<br>";
-$result = $mysqli->query($sql);
-
-echo "<pre>";
-print_r($result);
-echo"</pre>";
+$sql = "SELECT JokeID, Joke_question, Joke_answer, users_id, username FROM Jokes_table JOIN users ON users.id = jokes_table.users_id WHERE Joke_question LIKE '$keywordfromform'";
 
 
-// $stmt = $mysqli->prepare("SELECT JokeID, Joke_question, Joke_answer, users_id, username FROM Jokes_table JOIN users ON users.id = Jokes_table.users_id WHERE Joke_question LIKE ?");
-// $stmt->bind_param("s", $keywordfromform);
-// $stmt->execute();
-// $stmt->store_result();
-// $stmt->bind_result($JokeID, $Joke_question, $Joke_answer, $userid, $username);
-// if ($stmt->num_rows > 0) {    
-//   // output data of each row    
-//   echo "<div id='accordion'>";    
-//   while($stmt->fetch()) {        
-//     $safe_joke_question = htmlspecialchars($Joke_question);        
-//     $safe_joke_answer = htmlspecialchars($Joke_answer);        
-//     echo "<h3>" . $safe_joke_question . "</h3>";                
-//     echo "<div><p>" . $safe_joke_answer  . " -- Submitted by user " . $username ."</p></div>";    
-//   }    
-//   echo "</div>";
-// } else 
-// {    echo "0 results";}
+$stmt = $mysqli->prepare("SELECT JokeID, Joke_question, Joke_answer, users_id, username FROM Jokes_table JOIN users ON users.id = jokes_table.users_id WHERE Joke_question LIKE ?");
+$stmt->bind_param("s", $keywordfromform);
+$stmt->execute();
+$stmt->store_result();
+$stmt->bind_result($JokeID, $Joke_question, $Joke_answer, $userid, $username);
+if ($stmt->num_rows > 0) {    
+  // output data of each row    
+  echo "<div id='accordion'>";    
+  while($stmt->fetch()) {        
+    $safe_joke_question = htmlspecialchars($Joke_question);        
+    $safe_joke_answer = htmlspecialchars($Joke_answer);        
+    echo "<h3>" . $safe_joke_question . "</h3>";                
+    echo "<div><p>" . $safe_joke_answer  . " -- Submitted by user " . $username ."</p></div>";    
+  }    
+  echo "</div>";
+} else 
+{    echo "0 results";}
 ?>
