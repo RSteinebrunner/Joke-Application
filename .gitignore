@@ -1,0 +1,4 @@
+vendor/
+.env
+Procfile
+Jokes-Hosted-PHP.code-workspace
