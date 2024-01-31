@@ -4,11 +4,11 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 // modify these settings according to the account on your database server.
-$host = "localhost";
-$port = "3306";
+$host = "roundhouse.proxy.rlwy.net";
+$port = "54211";
 $username = "root";
-$user_pass = "";
-$database_in_use = "JokesDB";
+$user_pass = "cAGD51F13bG3c6AA4a32bb4eBHdFh1CD";
+$database_in_use = "railway";
 
 
 $mysqli = new mysqli($host, $username, $user_pass, $database_in_use);
