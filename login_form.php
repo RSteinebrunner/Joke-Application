@@ -17,4 +17,4 @@
             <div class="col-md-5"><input id = "password" type="password" name="password" placeholder="password" class="form-control input-md" required="">
             <p class="help-block">Enter your password</p></div></div><div class="form-group">    <label for="submit" class="col-md-4 control-label"></label>    
             <div class-"col-md-4">    <button id="submit" name="submit" class="btn btn-primary">Login</button>    
-        </div></div></fieldset></form> <?php//include "search_keyword.php";$mysqli->close();?></body></html>
+        </div></div></fieldset></form></body></html>
